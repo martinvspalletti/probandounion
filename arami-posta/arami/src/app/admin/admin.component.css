@@ -1,0 +1,20 @@
+.example-container {
+  /*height: calc(100vh - 136px);*/
+  height: calc(100vh - 52px);
+  background-color: #a9a9a9;
+}
+
+mat-sidenav {
+  width: 15%;
+  background-color: black;
+  color: white;
+  border-color: white;
+}
+
+mat-divider {
+  border-color: white;
+}
+
+button {
+  width: 100%;
+}

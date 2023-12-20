@@ -1,0 +1,22 @@
+.example-container {
+  height: 100%;
+  overflow: auto;
+}
+
+table {
+  background-color: #a9a9a9;
+}
+
+tr.mat-mdc-footer-row {
+  font-weight: bold;
+}
+
+.mat-mdc-table-sticky {
+  border-top: 1px solid #e0e0e0;
+}
+
+th,
+td {
+  color: black;
+  border-color: white;
+}

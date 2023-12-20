@@ -1,0 +1,49 @@
+<h2>Dejanos tu comentario</h2>
+<form [formGroup]="comentariosForm" (ngSubmit)="addComentario()">
+  <div class="col-md-5">
+    <input
+      type="text"
+      class="form-control mb-3"
+      formControlName="nombre"
+      required
+      placeholder="Nombre"
+    />
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        comentariosForm.get('nombre')?.hasError('required') &&
+        comentariosForm.get('nombre')?.touched
+      "
+    >
+      El campo es obligatorio
+    </div>
+  </div>
+
+  <div class="col-md-10">
+    <textarea
+      formControlName="detalle"
+      class="form-control"
+      cols="30"
+      rows="8"
+    ></textarea>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        comentariosForm.get('detalle')?.hasError('required') &&
+        comentariosForm.get('detalle')?.touched
+      "
+    >
+      El campo es obligatorio
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    [disabled]="comentariosForm.invalid"
+    class="btn btn-dark mt-2"
+  >
+    Enviar
+  </button>
+</form>
+
+{{comentarios | json}}

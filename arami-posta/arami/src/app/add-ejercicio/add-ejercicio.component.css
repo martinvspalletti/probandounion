@@ -1,0 +1,9 @@
+.example-table {
+  background-color: #a9a9a9;
+}
+
+th,
+td {
+  color: black;
+  border-color: white;
+}

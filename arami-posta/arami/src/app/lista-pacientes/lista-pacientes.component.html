@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="row col-md-6">
+      <div class="col-md-6">
+        <h2 class="my-4 text-white">Lista de pacientes</h2>
+      </div>
+      <div class="col-md-4 my-4">
+        <button class="btn btn-secondary" routerLink="../addPacientes">
+          Agregar paciente
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">nombre</th>
+              <th scope="col">apellido</th>
+              <th scope="col">dni</th>
+              <th scope="col">telefono</th>
+              <th scope="col">acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let listapaciente of listaPacientes">
+              <th scope="row">{{ listapaciente.nombre }}</th>
+              <td>{{ listapaciente.apellido }}</td>
+              <td>{{ listapaciente.dni }}</td>
+              <td>{{ listapaciente.telefono }}</td>
+              <td>
+                <button class="btn bg-danger">editar</button
+                ><button class="btn bg-primary">eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

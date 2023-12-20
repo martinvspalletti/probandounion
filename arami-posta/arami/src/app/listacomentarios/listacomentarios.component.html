@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row d-flex justify-content-around">
+    <div class="col-md-8">
+      <h2 class="my-4">Comentarios</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">nombre</th>
+            <th scope="col">detalle</th>
+            <th scope="col">acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let comentario of comentarios">
+            <th scope="row">{{ comentario.nombre }}</th>
+            <td>
+              <p>{{ comentario.detalle }}</p>
+            </td>
+            <td><button class="btn bg-danger">editar</button></td>
+            <td><button class="btn bg-primary">eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

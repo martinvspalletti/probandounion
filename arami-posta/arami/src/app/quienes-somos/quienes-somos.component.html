@@ -1,0 +1,28 @@
+<div class="container text-dark">
+  <h1 class="text-white">Todo sobre nosotros</h1>
+  <div class="row text-center">
+    <div class="col-md-12 d-flex justify-content-between">
+      <div
+        class="card"
+        style="width: 18rem"
+        *ngFor="let profesional of profesiones"
+      >
+        <img src="{{ profesional.foto }}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h3 class="card-title">
+            {{ profesional.prof }}
+            <a href="https://wa.me/5493417516511" target="_blank"
+              ><i class="fa-brands fa-whatsapp"></i
+            ></a>
+          </h3>
+          <p class="card-text"><mat-divider class="mb-2"></mat-divider></p>
+          <p>{{ profesional.mat }}</p>
+          <mat-divider class="mb-2"></mat-divider>
+          <p class="descripcion">{{ profesional.titulo }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="my-5 py-5"></div>

@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row d-flex justify-content-around">
+    <div class="col-md-4">
+      <form [formGroup]="crearEjercicio" (ngSubmit)="addEjercicio()">
+        <h2 class="my-3">Crear ejercicio</h2>
+        <input
+          type="text"
+          class="form-control mb-3"
+          formControlName="nombre"
+          required
+          placeholder="Ingrese ejercicio"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            crearEjercicio.get('nombre')?.hasError('required') &&
+            crearEjercicio.get('nombre')?.touched
+          "
+        >
+          El campo es obligatorio
+        </div>
+        <button
+          type="submit"
+          [disabled]="crearEjercicio.invalid"
+          class="btn btn-dark"
+        >
+          Enviar
+        </button>
+      </form>
+    </div>
+
+    <div class="col-md-4">
+      <label class="my-4">Ejercicios creados</label>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ob</th>
+            <th scope="col">acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ejercicio of ejercicios">
+            <th scope="row">{{ ejercicio.nombre }}</th>
+            <td>
+              <button class="btn bg-danger" (click)="editar(ejercicio)">
+                editar</button
+              ><button class="btn bg-primary" (click)="del()">eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

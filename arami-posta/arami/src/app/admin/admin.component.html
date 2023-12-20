@@ -1,0 +1,36 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav opened mode="side">
+    <div class="col px-3">
+      <h1 class="my-4">Gestion admin</h1>
+      <div class="col mt-5">
+        <button class="btn btn-secondary" routerLink="./ejerciciospacientes">
+          Ejercicios
+        </button>
+      </div>
+      <mat-divider class="my-2"></mat-divider>
+      <div class="col my-2">
+        <button class="btn btn-secondary" routerLink="./gastos">Gastos</button>
+      </div>
+      <mat-divider class="my-2"></mat-divider>
+      <div class="col">
+        <button class="btn btn-secondary" routerLink="./listapacientes">
+          Pacientes
+        </button>
+      </div>
+      <mat-divider class="my-2"></mat-divider>
+      <div class="col my-2">
+        <button class="btn btn-secondary" routerLink="./turnospacientes">
+          Turnos
+        </button>
+      </div>
+      <mat-divider class="my-2"></mat-divider>
+      <div class="col">
+        <button class="btn btn-secondary" routerLink="./listaComentarios">
+          Comentarios
+        </button>
+      </div>
+      <mat-divider class="my-2"></mat-divider>
+    </div>
+  </mat-sidenav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

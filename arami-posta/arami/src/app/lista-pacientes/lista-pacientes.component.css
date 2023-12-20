@@ -1,0 +1,15 @@
+.example-container {
+  height: 60%;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  background-color: #a9a9a9;
+}
+
+th,
+td {
+  color: black;
+  border-color: white;
+}

@@ -1,0 +1,13 @@
+th,
+td {
+  color: black;
+  border-color: white;
+}
+
+.container {
+  color: black;
+}
+
+mat-form-field {
+  height: 60px;
+}

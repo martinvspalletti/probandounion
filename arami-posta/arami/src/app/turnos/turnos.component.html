@@ -1,0 +1,158 @@
+<div class="container">
+  <div class="row d-flex justify-content-around">
+    <h2 class="my-4 text-white">Saque aqui su turno</h2>
+    <div class="col-md-5 border border-dark px-5 py-4">
+      <form [formGroup]="turnosForm" (ngSubmit)="addTurno()">
+        <div class="row d-flex justify-content-around">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label>Obra social</label>
+              <select class="form-control" formControlName="ob" required>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+
+              <div
+                *ngIf="
+                  turnosForm.get('ob')?.hasError('required') &&
+                  turnosForm.get('ob')?.touched
+                "
+                class="alert alert-danger"
+              >
+                El campo es obligatorio
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label>Profesional</label>
+              <select class="form-control" formControlName="prof" required>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+
+              <div
+                *ngIf="
+                  turnosForm.get('prof')?.hasError('required') &&
+                  turnosForm.get('prof')?.touched
+                "
+                class="alert alert-danger"
+              >
+                El campo es obligatorio
+              </div>
+            </div>
+            <div class="mb-3">
+              <label>Ingrese DNI</label>
+              <input
+                formControlName="dni"
+                class="form-control"
+                type="text"
+                required
+              />
+
+              <div
+                *ngIf="
+                  turnosForm.get('dni')?.hasError('required') &&
+                  turnosForm.get('dni')?.touched
+                "
+                class="alert alert-danger"
+              >
+                El campo es obligatorio
+              </div>
+            </div>
+            <div class="row">
+              <label>Seleccione una fecha</label>
+              <mat-form-field class="col-md-7">
+                <input
+                  formControlName="fecha"
+                  matInput
+                  [matDatepicker]="picker"
+                />
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <div class="col-md-5">
+                <button mat-raised-button (click)="picker.open()">Fecha</button>
+              </div>
+            </div>
+
+            <div
+              *ngIf="
+                turnosForm.get('fecha')?.hasError('required') &&
+                turnosForm.get('fecha')?.touched
+              "
+              class="alert alert-danger"
+            >
+              El campo es obligatorio
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label>Ingrese telefono</label>
+              <input
+                formControlName="cel"
+                type="text"
+                class="form-control"
+                required
+              />
+
+              <div
+                *ngIf="
+                  turnosForm.get('cel')?.hasError('required') &&
+                  turnosForm.get('cel')?.touched
+                "
+                class="alert alert-danger"
+              >
+                El campo es obligatorio
+              </div>
+            </div>
+            <div class="mb-3">
+              <label>Ingrese nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="nombre"
+                required
+              />
+              <div
+                *ngIf="
+                  turnosForm.get('nombre')?.hasError('required') &&
+                  turnosForm.get('nombre')?.touched
+                "
+                class="alert alert-danger"
+              >
+                El campo es obligatorio
+              </div>
+            </div>
+            <div class="mb-3">
+              <label>Ingrese apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="apellido"
+                required
+              />
+
+              <div
+                *ngIf="
+                  turnosForm.get('apellido')?.hasError('required') &&
+                  turnosForm.get('apellido')?.touched
+                "
+                class="alert alert-danger"
+              >
+                El campo es obligatorio
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-dark"
+          [disabled]="turnosForm.invalid"
+        >
+          Enviar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
