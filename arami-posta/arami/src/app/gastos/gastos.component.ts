@@ -16,6 +16,7 @@ export class GastosComponent implements OnInit {
   private gs = inject(GastosService);
   constructor() {
     this.gastosForm = this.fb.group({
+      id: [""],
       detalle: ["", Validators.required],
       importe: ["", Validators.required],
     });
@@ -34,18 +35,18 @@ export class GastosComponent implements OnInit {
       .subscribe();
   }
 
-  actualizar() {
+  actualizar(id: number) {
     const _id = this.datos.find((datos) => {
-      return datos.id === datos.id;
+      return datos.id === id;
     });
     this.gs
       .updateGasto(
-        Number(_id?.id),
+        this.gastosForm.controls["id"].value,
         this.gastosForm.controls["detalle"].value,
         this.gastosForm.controls["importe"].value
       )
       .subscribe();
-    console.log(_id?.id);
+    console.log(_id);
   }
   delGasto(id: number) {
     this.gs.deleteGasto(id).subscribe();
@@ -56,6 +57,7 @@ export class GastosComponent implements OnInit {
       return datos.id === id;
     });
     this.gastosForm.patchValue({
+      id: gas?.id,
       detalle: gas?.detalle,
       importe: gas?.importe,
     });

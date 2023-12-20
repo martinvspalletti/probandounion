@@ -3,6 +3,8 @@
     <h2>Gastos</h2>
 
     <form [formGroup]="gastosForm">
+      <input class="form-control" formControlName="id" type="hidden" />
+
       <div class="col-md-4 mb-3">
         <input
           class="form-control"
@@ -50,7 +52,12 @@
         >
           Enviar
         </button>
-        <button (click)="actualizar()" class="btn bg-danger">actualizar</button>
+        <button
+          (click)="actualizar(gastosForm.get('id')?.value)"
+          class="btn bg-danger"
+        >
+          actualizar
+        </button>
       </div>
     </form>
 
