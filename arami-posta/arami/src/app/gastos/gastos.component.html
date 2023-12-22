@@ -27,7 +27,7 @@
       </div>
       <div class="col-md-2 mb-3">
         <input
-          type="text"
+          type="number"
           class="form-control"
           formControlName="importe"
           required
@@ -44,20 +44,25 @@
           El campo es obligatorio
         </div>
       </div>
-      <div class="col-md-1 pt-2 px-0">
-        <button
-          (click)="agregarGasto()"
-          [disabled]="gastosForm.invalid"
-          class="btn btn-dark"
-        >
-          Enviar
-        </button>
-        <button
-          (click)="actualizar(gastosForm.get('id')?.value)"
-          class="btn bg-danger"
-        >
-          actualizar
-        </button>
+      <div class="col-md-6 row pt-2 px-0">
+        <div class="col-md-2">
+          <button
+            [disabled]="gastosForm.invalid"
+            class="btn btn-dark"
+            (click)="agregarGasto()"
+          >
+            Enviar
+          </button>
+        </div>
+
+        <div class="col-md-2">
+          <button
+            class="btn bg-danger"
+            (click)="actualizar(gastosForm.get('id')?.value)"
+          >
+            actualizar
+          </button>
+        </div>
       </div>
     </form>
 
@@ -76,10 +81,10 @@
               <th scope="row">{{ dato.detalle }}</th>
               <td>{{ dato.importe }}</td>
               <td>
-                <button (click)="upGasto(dato.id)" class="btn bg-danger">
+                <button class="btn bg-danger" (click)="upGasto(dato.id)">
                   editar
                 </button>
-                <button (click)="delGasto(dato.id)" class="btn bg-primary">
+                <button class="btn bg-primary mx-2" (click)="delGasto(dato.id)">
                   eliminar
                 </button>
               </td>

@@ -1,16 +1,18 @@
-import { Component, OnInit, inject } from "@angular/core";
+import { Component, OnDestroy, OnInit, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { GastosService } from "../servicios/gastos.service";
 import { Gastos } from "./gastos";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-gastos",
   templateUrl: "./gastos.component.html",
   styleUrls: ["./gastos.component.css"],
 })
-export class GastosComponent implements OnInit {
+export class GastosComponent implements OnInit, OnDestroy {
   datos: Gastos[] = [];
-
+  suscription!: Subscription;
+  mensaje = "";
   gastosForm: FormGroup;
   private fb = inject(FormBuilder);
   private gs = inject(GastosService);
@@ -22,9 +24,21 @@ export class GastosComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.gs.getAll().subscribe((datos) => (this.datos = datos));
+    this.getAllGastos();
+    /*this.suscription = this.gs.refresh.subscribe(() => {
+      this.getAllGastos();
+    });*/
   }
 
+  ngOnDestroy() {
+    this.suscription.unsubscribe();
+  }
+
+  getAllGastos() {
+    this.gs.getAll().subscribe((datos) => {
+      this.datos = datos;
+    });
+  }
   agregarGasto() {
     this.gs
       .registrarGasto(
@@ -45,11 +59,12 @@ export class GastosComponent implements OnInit {
         this.gastosForm.controls["detalle"].value,
         this.gastosForm.controls["importe"].value
       )
-      .subscribe();
-    console.log(_id);
+      .subscribe(() => (this.mensaje = "Actualizado con exito"));
   }
   delGasto(id: number) {
-    this.gs.deleteGasto(id).subscribe();
+    this.gs
+      .deleteGasto(id)
+      .subscribe(() => (this.mensaje = "Eliminado con exito"));
   }
 
   upGasto(id: number) {
